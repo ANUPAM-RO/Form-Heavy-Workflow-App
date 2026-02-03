@@ -22,6 +22,21 @@ npm run dev
 ```
 3. Open http://localhost:3000 in your browser.
 
+## Architecture (High Level)
+- `src/app/page.tsx`
+  - Entry point rendering the multi-step request flow.
+- `src/components/request-flow/`
+  - `RequestFlow.tsx` container with state, validation, and navigation.
+  - `StepFields.tsx` form steps and inputs.
+  - `Field.tsx` shared field wrapper and styling.
+  - `DraftControls.tsx` save/restore/clear draft buttons.
+- `src/app/review/page.tsx`
+  - Review summary and Server Action submission.
+- `src/lib/`
+  - `schemas.ts` Zod schemas for validation.
+  - `storage.ts` localStorage draft helpers.
+
+
 ## Getting Started
 You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
