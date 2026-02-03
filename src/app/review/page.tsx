@@ -113,16 +113,24 @@ export default function ReviewPage() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
         <header className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-(--accent-2)">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--accent-2) shadow-[0_18px_40px_-28px_rgba(21,26,44,0.5)] backdrop-blur">
               Review
-            </p>
-            <h1 className="mt-3 font-display text-4xl font-semibold md:text-5xl">
+            </div>
+            <h1 className="mt-4 font-display text-4xl font-semibold md:text-5xl">
               Confirm & submit
             </h1>
             <p className="mt-3 max-w-xl text-lg text-(--ink-muted)">
               Check your answers before submitting. The team will receive a
               reference number after submission.
             </p>
+            <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-(--ink-muted)">
+              <span className="rounded-full border border-white/70 bg-white/80 px-4 py-2">
+                Secure review
+              </span>
+              <span className="rounded-full border border-white/70 bg-white/80 px-4 py-2">
+                Saved locally
+              </span>
+            </div>
           </div>
           <div className="rounded-2xl border border-white/60 bg-white/80 p-5 shadow-[0_30px_70px_-50px_rgba(21,26,44,0.6)] backdrop-blur-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-(--ink-muted)">
@@ -277,4 +285,3 @@ function SubmitButton({ isPending }: { isPending: boolean }) {
     </button>
   );
 }
-
