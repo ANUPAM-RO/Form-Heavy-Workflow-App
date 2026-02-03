@@ -25,14 +25,14 @@ const StepFields = memo(function StepFields({
   onChange,
 }: StepFieldsProps) {
   return (
-    <div className="mt-8 grid gap-6 md:grid-cols-2">
+    <div className="mt-8 grid gap-5 sm:gap-6 md:grid-cols-2">
       {step === 0 ? (
         <>
           <Field label="Full name" error={errors.fullName}>
             <input
               value={form.fullName}
               onChange={(event) => onChange("fullName", event.target.value)}
-              placeholder="Jordan Smith"
+              placeholder="Anupam Roy"
             />
           </Field>
           <Field label="Work email" error={errors.email}>

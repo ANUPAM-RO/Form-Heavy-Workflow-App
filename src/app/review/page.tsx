@@ -92,7 +92,7 @@ export default function ReviewPage() {
   }, [payload]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden px-6 py-12">
+    <div className="relative min-h-screen overflow-hidden px-4 py-10 sm:px-6 lg:px-10">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-28 left-[15%] h-90 w-90 rounded-full bg-[radial-gradient(circle,rgba(229,98,46,0.18),transparent_70%)] blur-2xl"
@@ -110,7 +110,7 @@ export default function ReviewPage() {
         className="z-50"
         toastClassName="!rounded-2xl !border !border-white/60 !bg-white/90 !text-(--ink) !shadow-[0_20px_60px_-35px_rgba(21,26,44,0.6)] !backdrop-blur-xl"
       />
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 sm:gap-10">
         <header className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-center">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-(--accent-2) shadow-[0_18px_40px_-28px_rgba(21,26,44,0.5)] backdrop-blur">
@@ -136,17 +136,17 @@ export default function ReviewPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-(--ink-muted)">
               Quick actions
             </p>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
               <Link
                 href="/"
-                className="cursor-pointer rounded-full border border-(--edge) bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--ink-muted) transition hover:-translate-y-0.5 hover:shadow-md"
+                className="w-full cursor-pointer rounded-full border border-(--edge) bg-white/80 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-(--ink-muted) transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
               >
                 Edit form
               </Link>
               <button
                 type="button"
                 onClick={handleDownloadSummary}
-                className="cursor-pointer rounded-full border border-white/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-(--ink-muted) transition hover:-translate-y-0.5 hover:shadow-md"
+                className="w-full cursor-pointer rounded-full border border-white/70 bg-white/80 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.12em] text-(--ink-muted) transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
               >
                 Download summary
               </button>
