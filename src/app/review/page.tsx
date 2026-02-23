@@ -13,17 +13,14 @@ const initialState: ActionState = { status: "idle" };
 
 export default function ReviewPage() {
   const router = useRouter();
-  const [payload, setPayload] = useState<FullRequest | null>(null);
+  const [payload] = useState<FullRequest | null>(() => {
+    if (typeof window === "undefined") return null;
+    return loadDraft();
+  });
   const [state, formAction, isPending] = useActionState(
     submitRequest,
     initialState
   );
-
-  useEffect(() => {
-    const draft = loadDraft();
-    setPayload(draft);
-  }, []);
-
   useEffect(() => {
     if (state.status === "success") {
       clearDraft();
@@ -36,7 +33,7 @@ export default function ReviewPage() {
       return () => window.clearTimeout(timer);
     }
     return undefined;
-  }, [state.status]);
+  }, [router, state.status]);
 
   const summary = useMemo(() => {
     if (!payload) return [];
@@ -285,3 +282,4 @@ function SubmitButton({ isPending }: { isPending: boolean }) {
     </button>
   );
 }
+

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import {
@@ -27,25 +27,18 @@ function toFieldErrors(error: z.ZodError<unknown>): FieldErrors {
 
 export default function RequestFlow() {
   const router = useRouter();
-  const [isMounted, setIsMounted] = useState(false);
   const [step, setStep] = useState<Step>(0);
-  const [form, setForm] = useState<FullRequest>(initialData);
-  const [errors, setErrors] = useState<FieldErrors>({});
-  const [hasDraft, setHasDraft] = useState(false);
-  const [draftMessage, setDraftMessage] = useState("");
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
+  const [form, setForm] = useState<FullRequest>(() => {
+    if (typeof window === "undefined") return initialData;
     const draft = loadDraft();
-    if (draft) {
-      setForm({ ...initialData, ...draft });
-      setHasDraft(true);
-    }
-  }, [isMounted]);
+    return draft ? { ...initialData, ...draft } : initialData;
+  });
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [hasDraft, setHasDraft] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return Boolean(loadDraft());
+  });
+  const [draftMessage, setDraftMessage] = useState("");
 
   const updateField = useCallback<UpdateField>((key, value) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -104,10 +97,6 @@ export default function RequestFlow() {
   }, [showDraftMessage]);
 
   const currentMeta = STEP_META[step];
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <div
@@ -174,7 +163,4 @@ export default function RequestFlow() {
     </div>
   );
 }
-
-
-
 
